@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CHOLASCHALKUG</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        /* Global Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: antiquewhite;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            background-color:  black;
+            color: white;
+            padding: 20px;
+        }
+        nav {
+            background-color: #a7c9d3;
+        }
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+        nav li {
+            display: inline;
+            margin: 10px;
+        }
+        nav a {
+            text-decoration: none;
+            color: red;
+        }
+        /* Responsive Styles */
+        @media screen and (max-width: 600px) {
+            nav ul {
+                text-align: center;
+            }
+            nav li {
+                display: block;
+                margin: 5px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>CHOLASCHALKUG</h1>
+    
+    <!-- Navigation Menu -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a> Kyampisi along Gayaza-Kayunga road</li>
+            <li><a href="about.html">About Us</a> We are manufacturing company that produces school chalk</li>
+            <li><a href="contact.html">Contact Us</a> +256761136867 OR +256708923266</li>
+        </ul>
+    </nav>
+
+
+    <h2>Cholas chalk is a manufacturing company that produces school chalk, both colored and white chalk.</h2>
+    <h3>Available products and price</h3>
+    <ol>
+        <li>One small box of white chalk costs 3,000 UGX</li>
+        <li>One small box of colored chalk costs 4,000 UGX</li>
+        <li>One carton of white chalk costs 70,000 UGX</li>
+        <li>One carton of colored chalk costs 75,000 UGX</li>
+    </ol>
+    <p>We offer practical training of chalk manufacturing at a favorable client-manageable price.</p>
+    
+
+    
+    <p><a href="https://www.cholaschalkug.com">Visit CholasChalkUG</a></p>
+    
+    <img src="cholas logo.jpg" alt="cholaschalkug" width="200" height="100"
+
+    <form id="orderForm">
+        <table>
+        
+            <tr>
+                <td>Product:</td>
+                <td>
+                    <select name="product" required>
+                        <option value="white-small-box">White Chalk - Small Box</option>
+                        <option value="colored-small-box">Colored Chalk - Small Box</option>
+                        <option value="white-carton">White Chalk - Carton</option>
+                        <option value="colored-carton">Colored Chalk - Carton</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Quantity:</td>
+                <td>
+                    <input type="number" name="quantity" min="1" required>
+                </td>
+            </tr>
+        </table>
+        <input type="submit" value="Place Order" name="submit">
+    </form>
+
+    <!-- Add a section for processing the order and displaying the total cost -->
+    <div id="orderSummary" style="display: contents and totalcost;">
+        <h3>Order Summary</h3>
+        <p>Product: <span id="productName"></span></p>
+        <p>Quantity: <span id="orderQuantity"></span></p>
+        <p>Total Cost: UGX <span id="totalCost"></span></p>
+    </div>
+
+    <!-- Add a statement to provide evidence of the placed order -->
+    <div id="evidenceStatement" style="display: none;">
+        <p>Thank you for placing your order with us. Your order details are as follows:</p>
+        <p>Product: <span id="evidenceProductName"></span></p>
+        <p>Quantity: <span id="evidenceOrderQuantity"></span></p>
+        <p>Total Cost: UGX <span id="evidenceTotalCost"></span></p>
+    </div>
+
+    <p><a href="https://www.cholaschalkug.com">Visit CholasChalkUG</a></p>
+
+    
+
+    <script>
+        document.getElementById("orderForm").addEventListener("submit", function (event) {
+            event.preventDefault();
+            processOrder();
+        });
+    
+        function processOrder() {
+            const form = document.getElementById("orderForm");
+            const product = form.elements.product.value;
+            const quantity = parseInt(form.elements.quantity.value, 10);
+    
+            // Define the cost of each product
+            const productCosts = {
+                "white-small-box": 3000,
+                "colored-small-box": 4000,
+                "white-carton": 70000,
+                "colored-carton": 75000,
+            };
+    
+            const totalCost = productCosts[product] * quantity;
+    
+            // Update the order summary
+            document.getElementById("productName").textContent = product;
+            document.getElementById("orderQuantity").textContent = quantity;
+            document.getElementById("totalCost").textContent = totalCost;
+    
+            // Show the order summary
+            document.getElementById("orderSummary").style.display = "block";
+    
+            // Provide evidence of the placed order
+            document.getElementById("evidenceProductName").textContent = product;
+            document.getElementById("evidenceOrderQuantity").textContent = quantity;
+            document.getElementById("evidenceTotalCost").textContent = totalCost;
+            document.getElementById("evidenceStatement").style.display = "block";
+        }
+    </script>
+    
+</body>
+</html>
